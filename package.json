@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "eslint": "^9.30.1",
+    "eslint-config-prettier": "^10.1.5",
+    "lint-staged": "^16.1.2",
+    "prettier": "^3.6.2",
+    "simple-git-hooks": "^2.13.0",
+    "typescript-eslint": "^8.35.1"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
+  "lint-staged": {
+    "*": [
+      "git-secrets --scan"
+    ],
+    "*.(ts|tsx|js|jsx)": [
+      "npx eslint --fix"
+    ],
+    "*.(ts|tsx|js|jsx|json|html|yml|yaml|md|graphql|css|scss|less|vue|flow)": [
+      "npx prettier --write"
+    ]
+  }
+}
